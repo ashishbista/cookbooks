@@ -10,11 +10,5 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     owner deploy[:user]
     variables(:environment_variables => deploy[:environment_variables])
-
-    notifies :run, "execute[restart Rails app #{application}]"
-
-    only_if do
-      File.exists?("#{deploy[:deploy_to]}") && File.exists?("#{deploy[:deploy_to]}/shared/config/")
-    end
   end
 end
