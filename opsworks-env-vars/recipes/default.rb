@@ -8,6 +8,6 @@ node[:deploy].each do |application, deploy|
     mode "0660"
     group deploy[:group]
     owner deploy[:user]
-    variables(:environment_variables => node[:deploy][application][:environment_variables])
+    variables(:environment_variables => node[:deploy][:environment_variables])
   end
 end
